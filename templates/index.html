@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BODEGA CATENA ZAPATA</title>
+    <link rel="stylesheet" href="../static/styles.css">
+    <style>
+        /* Estilo adicional para mejorar la apariencia */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+        a:hover {
+            color: #0056b3;
+        }
+        .highlight {
+            background-color: #f0f8ff;
+            border-radius: 5px;
+            padding: 5px;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>BODEGA CATENA ZAPATA</h1>
+    <section>
+        <h2>ELEGIR SECTOR PARA INICIAR SESIÓN</h2>
+        <ul>
+            <li><a href="/login" id="enologo-link">Enólogo</a></li>
+            <li><a href="/loginenc" id="encargado-link">Encargado</a></li>
+            <li><a href="/loginb" id="laboratorio-link">Laboratorio</a></li>
+        </ul>
+        <div class="message" id="dynamic-message">Selecciona un sector para continuar.</div>
+    </section>
+    <script>
+        // Capturamos los elementos del DOM
+        const enologoLink = document.getElementById('enologo-link');
+        const encargadoLink = document.getElementById('encargado-link');
+        const laboratorioLink = document.getElementById('laboratorio-link');
+        const dynamicMessage = document.getElementById('dynamic-message');
+
+        // Función para cambiar el mensaje dinámico
+        function changeMessage(sector) {
+            dynamicMessage.textContent = `Has seleccionado el sector: ${sector}`;
+        }
+
+        // Agregamos eventos para los enlaces
+        enologoLink.addEventListener('mouseover', () => changeMessage('Enólogo'));
+        encargadoLink.addEventListener('mouseover', () => changeMessage('Encargado'));
+        laboratorioLink.addEventListener('mouseover', () => changeMessage('Laboratorio'));
+
+        // Restauramos el mensaje inicial al salir del enlace
+        [enologoLink, encargadoLink, laboratorioLink].forEach(link => {
+            link.addEventListener('mouseout', () => {
+                dynamicMessage.textContent = 'Selecciona un sector para continuar.';
+            });
+        });
+    </script>
+</body>
+</html>
